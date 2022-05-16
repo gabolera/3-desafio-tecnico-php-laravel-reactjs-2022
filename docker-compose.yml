@@ -1,0 +1,60 @@
+version: '3.7'
+services:
+  # NGINX
+  web:
+    container_name: challenge-nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      # Configurações NGINX
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/vhosts/vhosts.conf:/etc/nginx/conf.d/vhosts.conf
+      - ./docker/nginx/proxy/upstream.conf:/etc/nginx/upstream.conf
+      - ./docker/nginx/logs:/etc/nginx/logs
+      - ./api:/var/www
+    links:
+      - api
+    networks:
+      - challenge
+
+  # PHP
+  api:
+    build:
+      args: 
+        user: php
+        uid: 1000
+      dockerfile: Dockerfile
+      context: ./
+    image: php7
+    container_name: challenge-php
+    working_dir: /var/www
+    # command: cd /var/www/html/api && composer install && php artisan migrate
+    volumes:
+      - ./api:/var/www
+    networks:
+      - challenge
+  
+  # POSTGRES
+  postgres:
+    image: postgres
+    container_name: challenge-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=da54d68w
+      - POSTGRES_DB=nodechallenge
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/data/postgres
+    networks:
+      - challenge
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  challenge:
+    driver: bridge
