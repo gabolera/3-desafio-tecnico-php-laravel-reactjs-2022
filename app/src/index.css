@@ -22,3 +22,17 @@ table.tableSpacing td >  {
 body{
   background-color: rgb(242, 242, 242);
 }
+
+.st1{
+  background: linear-gradient(
+                          to right,
+                          #ee7724,
+                          #d8363a,
+                          #dd3675,
+                          #b44593
+                        );
+}
+
+.st2 {
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}

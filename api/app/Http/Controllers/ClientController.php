@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $results = User::where('group', '=', 'CLIENT')->get();
+        $results = User::where('group', '=', 'CLIENT')->with('tasks')->get();
         return $results;
     }
 

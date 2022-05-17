@@ -38,10 +38,10 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = Task::find($id)->get()->first();
-        $task->title = $request->title;
-        $task->description = $request->description;
-        $task->expires_date = $request->expires_date;
-        $task->conclusion_date = $request->conclusion_date;
+        $task->title = isset($request->title) ? $request->title : $task->title;
+        $task->description = isset($request->description) ? $request->description : $task->description;
+        $task->expires_date = isset($request->expires_date) ? $request->expires_date : $task->expires_date;
+        $task->conclusion_date = ($request->conclusion_date == false) ? null : $request->conclusion_date;
         $task->save();
         $task->finished = !empty($request->conclusion_date) ? true : false;
         $task->overdue = ($task->expires_date > new DateTime()) ? true : false;
