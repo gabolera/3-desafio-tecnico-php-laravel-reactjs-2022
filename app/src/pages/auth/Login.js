@@ -35,10 +35,10 @@ export function Login() {
                         src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                         alt="logo"
                       />
-                      <h4 className="text-xl font-semibold mt-1 mb-12 pb-1">We are The Lotus Team</h4>
+                      <h4 className="text-xl font-semibold mt-1 mb-12 pb-1">Login</h4>
                     </div>
                     <Form onSubmit={handleLogin}>
-                      <p className="mb-4">Please login to your account</p>
+                      <p className="mb-4">Faça login na sua conta</p>
                       <div className="mb-4">
                         <Input
                           name="email"
@@ -68,12 +68,9 @@ export function Login() {
                   className="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none st2"
                 >
                   <div className="text-white px-4 py-6 md:p-12 md:mx-6">
-                    <h4 className="text-xl font-semibold mb-6">We are more than just a company</h4>
+                    <h4 className="text-xl font-semibold mb-6"></h4>
                     <p className="text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat.
+                      
                     </p>
                   </div>
                 </div>

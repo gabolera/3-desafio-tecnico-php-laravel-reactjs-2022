@@ -16,7 +16,7 @@ function App() {
         window.location = '/login';
       }
     }else{
-      if(localStorage.getItem('expires_in') > new Date().getTime() || JSON.parse(localStorage.getItem('token')) !== ''){
+      if(localStorage.getItem('expires_in') > new Date().getTime() && JSON.parse(localStorage.getItem('token')) !== ''){
         window.location = '/clients';
       }
     }
